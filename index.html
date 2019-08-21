@@ -6,58 +6,68 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/deab3830b4.js"></script>
-  <title>Document</title>
+  <title>Gwack game</title>
 </head>
 <body>
 
   <header>
-    <h1>Gwack</h1>
+    <h1>GWACK</h1>
+    <form action="">
+    <div class="form-container">
+        <label for="difficulty">Choose difficulty</label>
+        <select name="difficulty" id="difficulty">
+          <option value="normal">normal</option>
+          <option value="easy">easy</option>
+          <option value="hard">hard</option>
+        </select>
+      </div>
+    </form>
   </header>
 
   <section id="global">
 
   <section id="left" class="side">
-    <div id="timer">0:20</div>
+    <h2 id="timer">0:20</h2>
 
-    
+
     <div id="level">Level 1</div>
   </section>
 
   <section id="main">
     <div class="hole">
-      <div id="a" class="mole mole-depop"></div>
+      <div id="a" class="mole"></div>
       <div class="hammer" id="1"></div>
     </div>
     <div class="hole">
-      <div id="z" class="mole mole-depop"></div>
+      <div id="z" class="mole"></div>
       <div class="hammer" id="2"></div>
     </div>
     <div class="hole">
-      <div id="e" class="mole mole-depop"></div>
+      <div id="e" class="mole"></div>
       <div class="hammer" id="3"></div>
     </div>
     <div class="hole">
-      <div id="q" class="mole mole-depop"></div>
+      <div id="q" class="mole"></div>
       <div class="hammer" id="4"></div>
     </div>
     <div class="hole">
-      <div id="s" class="mole mole-depop"></div>
+      <div id="s" class="mole"></div>
       <div class="hammer" id="5"></div>
     </div>
     <div class="hole">
-        <div id="d" class="mole mole-depop"></div>
+        <div id="d" class="mole"></div>
         <div class="hammer" id="6"></div>
     </div>
     <div class="hole">
-        <div id="w" class="mole mole-depop"></div>
+        <div id="w" class="mole"></div>
         <div class="hammer" id="7"></div>
     </div>
     <div class="hole">
-        <div id="x" class="mole mole-depop"></div>
+        <div id="x" class="mole"></div>
         <div class="hammer" id="8"></div>
     </div>
     <div class="hole">
-        <div id="c" class="mole mole-depop"></div>
+        <div id="c" class="mole"></div>
         <div class="hammer" id="9"></div>
     </div>
   </section>
@@ -74,8 +84,9 @@
 
 </section>
 
-<script src="app.js"></script>
 <script src="timer.js"></script>
+<script src="difficulty.js"></script>
 <script src="moles.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

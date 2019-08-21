@@ -1,18 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette|Kalam:400,700|Play:700&display=swap');
+
+/* font-family: 'Play', sans-serif;
+font-family: 'Courgette', cursive;
+font-family: 'Kalam', cursive; */
+
 * {
   box-sizing: border-box;
 }
 body {
   height: 100vh;
+  font-family: 'Courgette', cursive;
 }
 
 header {
   text-align: center;
-  background: tomato;
-  padding:1px;
+  background: #eb7070;
+  padding:1px;  
+  font-size: 2rem;
+}
+
+header h1 {
+  font-family: 'Courgette', cursive;
+  font-size: 3rem;
 }
 
 #global {
-  background: yellow;
+  background: #e6e56c;
 }
 
 #main {
@@ -23,15 +36,15 @@ header {
   grid-template-columns: repeat(3,1fr);
   grid-template-rows: repeat(3,1fr);
   margin:auto;
-  background: yellowgreen;
+  background: #64e291;
 }
 
 .hole {
   overflow: hidden;
   position: relative;
-  z-index: 1;
+  /* z-index: 1; */
   margin: 1px;
-  background: yellow;
+  background: #e6e56c;
 }
 
 .mole {
@@ -43,8 +56,8 @@ header {
   width:100%;
   margin:1%;
   transition-property: all;
-  transition-duration: 500ms;
-  z-index: 2;
+  transition-duration: 800ms;
+  /* z-index: 2; */
 }
 
 .hole.up .mole {
@@ -61,7 +74,7 @@ header {
 
 .side {
   font-size: 2rem;
-  background: yellowgreen;
+  background: #64e291;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -96,9 +109,9 @@ header {
 
 /* .hammer {
   background: url("./images/thor-hammer.png") no-repeat;
-  z-index:0;
-  height:200%;
-  width:200%;
+  position: absolute;
+  top: 100%;
+  
 } */
 
 
@@ -112,12 +125,12 @@ header {
   text-align: center;
   margin: 30px 30px;
   padding: 20px;
-  background: rgb(223, 238, 86);
+  background: #fec771;
 }
 
-.difficulty-choice {
-  
-}
+/* .difficulty-choice {
+
+} */
 
 
 
@@ -125,4 +138,17 @@ header {
   text-align: center;
   margin: 30px;
   /* visibility: hidden; */
+}
+
+.form-container {
+  display:flex;
+  align-items: baseline;
+  font-family: 'Play', sans-serif;
+  font-size : 1.5rem;
+}
+select {
+  width: 100px;
+  height: 30px;
+  margin-bottom: 20px;
+  margin-left: 20px;
 }
