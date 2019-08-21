@@ -10,7 +10,7 @@ function easyMode() {
     moles[i].style.background = "url('./images/flower-rabbit.gif') bottom no-repeat";
   }
   for(i = 0; i < moles.length; i++) {
-    moles[i].style.backgroundSize ="90%";
+    moles[i].style.backgroundSize ="85%";
   }
 }
 
@@ -24,7 +24,7 @@ function normalMode() {
     moles[i].style.background = "url('./images/smile-mole.gif') bottom no-repeat";
   }
   for(i = 0; i < moles.length; i++) {
-    moles[i].style.backgroundSize ="90%";
+    moles[i].style.backgroundSize ="85%";
   }
 }
 
@@ -36,5 +36,8 @@ function hardMode() {
   }
   for(i = 0; i < moles.length; i++) {
     moles[i].style.background = "url('./images/giphy-downsized.gif') bottom no-repeat";
+  }
+  for(i = 0; i < moles.length; i++) {
+    moles[i].style.backgroundSize ="85%";
   }
 }

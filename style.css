@@ -20,8 +20,13 @@ header {
 }
 
 header h1 {
+  padding-top: 20px;
   font-family: 'Courgette', cursive;
   font-size: 3rem;
+}
+
+.form-container {
+  margin-left: 30px;
 }
 
 #global {
@@ -29,7 +34,7 @@ header h1 {
 }
 
 #main {
-  /* background: url('./images/background-bright-close-up-413195.jpg') contain; */
+  background: url('./images/background-bright-close-up-413195.jpg') contain;
   height: 500px;
   width: 500px;
   display: grid;
@@ -42,13 +47,13 @@ header h1 {
 .hole {
   overflow: hidden;
   position: relative;
-  /* z-index: 1; */
   margin: 1px;
   background: #e6e56c;
+
 }
 
 .mole {
-  background: url('./images/giphy-downsized.gif') bottom no-repeat;
+  background: url('./images/giphy-downsized.gif');
   background-size: 80%;
   position:absolute;
   top:100%;
@@ -57,13 +62,30 @@ header h1 {
   margin:1%;
   transition-property: all;
   transition-duration: 800ms;
-  /* z-index: 2; */
 }
 
 .hole.up .mole {
   top: 0;
 }
 
+.hammer {
+  background: url("./images/thor-hammer.png") no-repeat left;
+  background-size: 100%;
+  /* z-index: 2; */
+  position: absolute;
+  left: 100%;
+  top: -50%;
+  height: 80px;
+  width : 80px;
+  transition: all ease-out;
+  transition-duration: 100ms;
+}
+
+.hole.bim .hammer {
+  top:20%;
+  left: 30%;
+  transform: rotate(-90deg);
+}
 
 /* layout */
 
@@ -81,13 +103,8 @@ header h1 {
   width:100%;
 }
 
-/* #left {
-  
-}
 
-#right {
-
-} */
+      /* #right  */
 
 .fa-heart {
   color: red;
@@ -105,14 +122,11 @@ header h1 {
   background: rgb(173, 124, 218);
   margin: 20px auto;
   padding: 30px 30px;
+  visibility: visible;
+  color: white;
+  font-weight: bold; 
 }
 
-/* .hammer {
-  background: url("./images/thor-hammer.png") no-repeat;
-  position: absolute;
-  top: 100%;
-  
-} */
 
 
 #HP {
@@ -151,4 +165,12 @@ select {
   height: 30px;
   margin-bottom: 20px;
   margin-left: 20px;
+}
+
+.reload_button {
+  background: darkblue;
+  color: white;
+  margin: 20px auto;
+  padding: 30px 30px;
+  visibility: hidden;
 }

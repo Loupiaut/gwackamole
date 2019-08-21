@@ -6,6 +6,8 @@ const hp = document.getElementById('HP');
 const btnStart = document.getElementById('start_btn'); 
 const countdownDisplay = document.getElementById('timer');
 const gameStatus = document.getElementById('text-display');
+const reloadButton = document.getElementById('reload_btn');
+
 
 let element = document.querySelector('.mole');
 let animTime = window.getComputedStyle(element, null).getPropertyValue('transition-duration');
@@ -39,7 +41,7 @@ function randHole(holes) {
   const i = Math.floor(Math.random()*holes.length);
   console.log(i)
   // can't select same hole twice in a row and can't create a mole inside 
-  if (holes[i].parentNode.classList.contains('up')) {
+  if (lastHole === i || holes[i].parentNode.classList.contains('up')) {
     return randHole(holes);
   }
   lastHole = i; 
@@ -57,6 +59,16 @@ function hpLossCountdown(id) {
   });
 }
 
+function applause() {
+  let applause = new Audio("./sounds/applause.wav")
+  applause.play();
+}
+
+function laugh() {
+  let laugh = new Audio("./sounds/witch_cackle-1.ogg")
+  laugh.play();
+}
+
 function molePop() {
   // const time = randTime(1000,2000);
   const hole = randHole(holes);  
@@ -71,31 +83,51 @@ function molePop() {
 
   if (!timeUp) {
     setTimeout(() => {
+      if(!timeUp)
       molePop();
     }, speed);
   }
   else if(timeUp && playerHealth === 3) {
     setTimeout(() => {
-      gameStatus.innerHTML = 'Perfect Victory !!!';
+      console.log(gameStatus);
+      gameStatus.innerHTML = "Perfect Victory !!!";
       gameStatus.classList.remove('game-rules');
+      applause();
+      collapseAll();
     }, speed);
   }
   else if (timeUp && playerHealth > 0) {
     setTimeout(() => {
       gameStatus.innerHTML = 'Victory !!!';
       gameStatus.classList.remove('game-rules');
+      applause();
+      collapseAll();
     }, speed);
   }
 }
 
 // whack the mole if correct key pressed, otherwise loose hp
+function hammerIn(mole){
+  mole.parentNode.classList.add('bim');
+  setTimeout(() => {
+    mole.parentNode.classList.remove('bim');
+  }, 175);
+} 
+
 function ouch(key) {
   if (timeUp === false) {
     let dudule = document.getElementById(`${key}`);
       if (dudule.parentNode.classList.contains("up")) {
         dudule.parentNode.classList.remove("up");
+        hammerIn(dudule);
+
+        let soundNay = new Audio("./sounds/hit20.mp3.flac");
+        soundNay.play();
       }
       else {
+        hammerIn(dudule);
+        let soundYay = new Audio("./sounds/impactsplat03.mp3.flac");
+        soundYay.play();
         healthDown();
       }
   }
@@ -120,14 +152,21 @@ function healthCheck() {
     hp.innerHTML = `<i class="far fa-heart"></i><i class="far fa-heart"></i><i class="far fa-heart"></i>`;
     timeUp = true;
     gameStatus.innerHTML = 'Game Over'
-    gameStatus.classList.remove('game-rules')
-    timer(0);
     
+    gameStatus.classList.remove('game-rules')
+    laugh();
+    collapseAll();    
+  }
+}
+
+function collapseAll() {
+  for (let i of holes) {
+    i.classList.remove('up')
   }
 }
 
 function startGame() {
-  playerHealth = 300;
+  playerHealth = 3;
   healthCheck();
   gameStatus.classList.add('game-rules')
   gameStatus.innerHTML = 'Use keyboard to whack the moles :<br /> a / z / e <br /> q / s / d <br /> w / x / c';
