@@ -17,24 +17,26 @@ const msAnimTime = Number(animTime.slice(0,-1))*1000;
 
 const getKey = document.addEventListener("keydown", (e) => {
   let allowedKeys = ["a","z","e","q","s","d","w","x","c"]
-  if (allowedKeys.includes(e.key)) {
-  ouch(e.key);
-
+  if (allowedKeys.includes(e.key) && !timeUp) {
+    ouch(e.key);
+  }
+  else if(allowedKeys.includes(e.key) && timeUp) {
+    practice(e.key);
   }
 });
 
 let lastHole;
 let playerHealth = 3;
-let timeUp = false;
-let gameLength = 20;  // in seconds
-let speed = 1000;     // in ms
-let stay = 1200;      // in ms
+let timeUp = true;
+let gameLength = 20;  // seconds
+let speed = 1000;     // ms
+let stay = 1200;      // ms
 
 
 // Temps entre moles aléatoire (not used)
-function randTime(min, max) {
-  return Math.floor(Math.random()*(max-min) + min);
-};
+// function randTime(min, max) {
+//   return Math.floor(Math.random()*(max-min) + min);
+// };
 
 // Random hole
 function randHole(holes) {
@@ -87,23 +89,23 @@ function molePop() {
       molePop();
     }, speed);
   }
-  else if(timeUp && playerHealth === 3) {
-    setTimeout(() => {
-      console.log(gameStatus);
-      gameStatus.innerHTML = "Perfect Victory !!!";
+  else {
+    victory(playerHealth);
+  }
+}
+
+function victory(hp) {
+  setTimeout(() => {
+      if (hp === 3) {
+        gameStatus.innerHTML = "Perfect Victory !!!";
+      }
+      else {
+        gameStatus.innerHTML = 'Victory !!!';
+      }
       gameStatus.classList.remove('game-rules');
       applause();
       collapseAll();
     }, speed);
-  }
-  else if (timeUp && playerHealth > 0) {
-    setTimeout(() => {
-      gameStatus.innerHTML = 'Victory !!!';
-      gameStatus.classList.remove('game-rules');
-      applause();
-      collapseAll();
-    }, speed);
-  }
 }
 
 // whack the mole if correct key pressed, otherwise loose hp
@@ -115,7 +117,7 @@ function hammerIn(mole){
 } 
 
 function ouch(key) {
-  if (timeUp === false) {
+  if (!timeUp) {
     let dudule = document.getElementById(`${key}`);
       if (dudule.parentNode.classList.contains("up")) {
         dudule.parentNode.classList.remove("up");
@@ -130,6 +132,16 @@ function ouch(key) {
         soundYay.play();
         healthDown();
       }
+  }
+}
+
+function practice(key) {
+  if (timeUp) {
+    let dudulette = document.getElementById(`${key}`);
+    hammerIn(dudulette);
+    let soundNay = new Audio("./sounds/hit20.mp3.flac");
+    soundNay.play();
+      
   }
 }
 
@@ -150,9 +162,10 @@ function healthCheck() {
   }
   else if (playerHealth === 0) {
     hp.innerHTML = `<i class="far fa-heart"></i><i class="far fa-heart"></i><i class="far fa-heart"></i>`;
-    timeUp = true;
-    gameStatus.innerHTML = 'Game Over'
     
+    timeUp = true;
+
+    gameStatus.innerHTML = 'Game Over'
     gameStatus.classList.remove('game-rules')
     laugh();
     collapseAll();    
