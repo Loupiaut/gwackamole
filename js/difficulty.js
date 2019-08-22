@@ -1,5 +1,3 @@
-
-
 function easyMode() {
   speed = 1500;
   stay = 2100;
@@ -10,7 +8,7 @@ function easyMode() {
     moles[i].style.background = "url('./images/flower-rabbit.gif') bottom no-repeat";
   }
   for(i = 0; i < moles.length; i++) {
-    moles[i].style.backgroundSize ="85%";
+    moles[i].style.backgroundSize ="100%";
   }
 }
 
@@ -24,7 +22,7 @@ function normalMode() {
     moles[i].style.background = "url('./images/smile-mole.gif') bottom no-repeat";
   }
   for(i = 0; i < moles.length; i++) {
-    moles[i].style.backgroundSize ="85%";
+    moles[i].style.backgroundSize ="100%";
   }
 }
 
@@ -38,6 +36,24 @@ function hardMode() {
     moles[i].style.background = "url('./images/giphy-downsized.gif') bottom no-repeat";
   }
   for(i = 0; i < moles.length; i++) {
-    moles[i].style.backgroundSize ="85%";
+    moles[i].style.backgroundSize ="100%";
   }
+}
+
+function tooHardMode() {
+  speed = 400;
+  stay = 600;
+  for(i = 0; i < moles.length; i++) {
+    moles[i].style.transitionDuration = '175ms';
+  }
+  for(i = 0; i < moles.length; i++) {
+    moles[i].style.background = "url('./images/giphy-downsized.gif') bottom no-repeat";
+  }
+  for(i = 0; i < moles.length; i++) {
+    moles[i].style.backgroundSize ="100%";
+  }
+  document.getElementById('global').background = "URL('./images/onfire.gif')"
+  document.querySelectorAll('hole').background = "URL('./images/onfire.gif')"
+
+  
 }

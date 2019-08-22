@@ -6,6 +6,8 @@ font-family: 'Kalam', cursive; */
 
 * {
   box-sizing: border-box;
+  margin:0;
+  padding:0;
 }
 body {
   height: 100vh;
@@ -30,13 +32,13 @@ header h1 {
 }
 
 #global {
-  background: #e6e56c;
+  background: #64e291;
 }
 
 #main {
-  background: url('./images/background-bright-close-up-413195.jpg') contain;
   height: 500px;
   width: 500px;
+  padding: 20px;
   display: grid;
   grid-template-columns: repeat(3,1fr);
   grid-template-rows: repeat(3,1fr);
@@ -49,11 +51,10 @@ header h1 {
   position: relative;
   margin: 1px;
   background: #e6e56c;
-
 }
 
 .mole {
-  background: url('./images/giphy-downsized.gif');
+  background: url('./images/giphy-downsized.gif') center no-repeat;
   background-size: 80%;
   position:absolute;
   top:100%;
@@ -118,17 +119,6 @@ header h1 {
   text-align: center;
 }
 
-#start_btn {
-  background: rgb(173, 124, 218);
-  margin: 20px auto;
-  padding: 30px 30px;
-  visibility: visible;
-  color: white;
-  font-weight: bold; 
-}
-
-
-
 #HP {
   display: flex;
   justify-content: space-evenly;
@@ -142,11 +132,8 @@ header h1 {
   background: #fec771;
 }
 
-/* .difficulty-choice {
 
-} */
-
-
+      /* difficulty-choice */
 
 #level {
   text-align: center;
@@ -157,7 +144,7 @@ header h1 {
 .form-container {
   display:flex;
   align-items: baseline;
-  font-family: 'Play', sans-serif;
+  /* font-family: 'Play', sans-serif; */
   font-size : 1.5rem;
 }
 select {
@@ -167,10 +154,53 @@ select {
   margin-left: 20px;
 }
 
-.reload_button {
-  background: darkblue;
-  color: white;
-  margin: 20px auto;
+#start_btn {
+  margin: 40px auto;
   padding: 30px 30px;
-  visibility: hidden;
+  visibility: visible;
 }
+
+#reload_btn {
+  padding: 30px 30px;
+  margin: 40px auto;
+  visibility: visible;
+}
+
+.btns {
+  display: flex;
+  justify-content: baseline;
+}
+.btn {
+  position: relative;
+  color: black;
+  padding: 10% 10%;
+  font-size: 1.5rem;
+  font-weight: bold; 
+  background: #e6e56c;
+}
+
+form {
+  display: flex;
+  align-content: space-around;
+  /* align-items: baseline; */
+}
+
+select {
+  margin-top: 30px;
+}
+
+#start-timer {
+  text-align: center;
+  padding-top: 25%;
+  font-size: 4rem;
+}
+
+/* .dirt {
+  background: url('./images/dirt.png') bottom no-repeat;
+  position: relative;
+  bottom: 10px;
+  height: 151px;
+  bottom: -20px;
+  background-size: 100%;
+  z-index: 1;
+} */
